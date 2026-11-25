@@ -1,0 +1,14 @@
+BARBACOA LAS TORRES
+
+1. Realiza una copia de seguridad de tu proyecto y bases de datos actuales.
+2. Abre XAMPP e inicia MySQL.
+3. En phpMyAdmin, Importar > las_torres.sql. Se crea la base las_torres sin borrar smartpyme.
+4. Abre esta carpeta en Visual Studio Code.
+5. Ejecuta: pip install -r requirements.txt
+6. Ejecuta: python app.py (o INICIAR.bat).
+7. Abre http://127.0.0.1:5000
+
+El menú, precios, costos, existencias, ventas y gastos precargados son DATOS ILUSTRATIVOS. No representan operaciones verificadas de Las Torres.
+Para iniciar operaciones reales, elimina las ventas y gastos de muestra y ajusta los productos antes de registrar cobros.
+No publiques este sistema en internet sin implementar inicio de sesión, roles, seguridad y configuración de producción.
+No se incluye teléfono, dirección exacta ni horario porque no se han proporcionado.

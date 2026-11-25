@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barbacoa Las Torres · {% block title %}{% endblock %}</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+<div class="workspace">
+<aside class="sidebar">
+<div class="brand"><img class="brand-logo" src="{{ url_for('static',filename='img/logo_las_torres.png') }}" alt="Barbacoa Las Torres"><div><b>Barbacoa Las Torres</b><small>Toluca · Estado de México</small></div></div>
+<div class="nav-caption">MENÚ PRINCIPAL</div>
+<nav>
+{% for endpoint,label,ico in [('dashboard','Dashboard','◫'),('punto_de_venta','Caja y pedidos','▣'),('productos','Menú de barbacoa','▦'),('gestion_productos','Administrar menú','✎'),('inventario','Inventario e insumos','▤'),('simulador','Simulador','◬'),('finanzas','Finanzas','◈'),('asistente','Análisis del negocio','✧')] %}
+<a class="navitem {% if request.endpoint == endpoint %}selected{% endif %}" href="{{url_for(endpoint)}}"><span class="nav-icon">{{ico}}</span><span>{{label}}</span></a>
+{% endfor %}
+</nav>
+<div class="business-info"><strong>BARBACOA LAS TORRES</strong><span>Zona Las Torres · Toluca, Estado de México</span><span>El auténtico sabor de Toluca en cada taco</span></div><div class="sidebar-foot"><span class="online-dot"></span> Base de datos MySQL <small>Sistema de gestión</small></div>
+</aside>
+<main class="main-page">
+<div class="page-top"><div><span class="eyebrow">BARBACOA LAS TORRES / ADMINISTRACIÓN</span><h1>El auténtico sabor de Toluca en cada taco</h1></div><span class="avatar" title="Barbacoa Las Torres">LT</span></div>
+<div class="embedded-content">
+<header class="page-header"><div><div class="eyebrow">PANEL DE CONTROL</div><h2>{% block title_heading %}{{ self.title() }}{% endblock %}</h2><p>Ventas, inventario y finanzas de Barbacoa Las Torres</p></div><span class="period-chip">● Datos de MySQL</span></header>
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% for category,message in messages %}<div class="alert alert-{{category}}">{{message}}</div>{% endfor %}
+{% endwith %}
+{% block body %}{% endblock %}
+</div>
+</main>
+</div>
+</body>
+</html>
